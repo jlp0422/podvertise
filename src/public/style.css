@@ -1,3 +1,8 @@
+/* **** GLOBAL **** */
+#wrapper {
+  margin-bottom: 50px;
+}
+
 /* **** NAV **** */
 .nav-wrapper {
   margin-bottom: 20px;
@@ -20,7 +25,7 @@
 .nav-grid {
   display: grid;
   grid-template-rows: 1;
-  grid-template-columns: 50px repeat(4, 1fr) 50px
+  grid-template-columns: 5% repeat(4, 1fr) 5%;
 }
 
 .nav-link-1 {
@@ -34,7 +39,7 @@
 /* **** ABOUT **** */
 .about-grid {
   display: grid;
-  grid-template-columns: 50px 1fr 50px;
+  grid-template-columns: 5% 1fr 5%;
   grid-template-rows: 3;
 }
 
@@ -53,4 +58,32 @@
 
 .about-button {
   margin: 20px 0px;
+}
+
+/* **** PODCAST **** */
+.podcast-grid {
+  margin: 0 5%
+}
+
+.pod-form-grid {
+  display: grid;
+  grid-template-columns: 1;
+  grid-template-rows: 2
+}
+
+.pod-headline {
+  margin: 20px 0px 10px;
+  text-align: center
+}
+
+.pod-sub {
+  text-align: center;
+}
+
+.pod-button {
+  justify-self: center;
+}
+
+.form-item {
+  margin: 10px 0px;
 }
