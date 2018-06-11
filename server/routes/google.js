@@ -4,12 +4,13 @@ module.exports = app;
 const { User } = require('../db').models
 const passport = require('passport')
 const GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
+const { GOOGLE_CLIENT_ID, GOOGLE_CLIENT_SECRET, HOST } = process.env
 
 passport.use(
   new GoogleStrategy({
-    clientID: process.env.CLIENT_ID,
-    clientSecret: process.env.CLIENT_SECRET,
-    callbackURL: `${process.env.HOST}/auth/google/callback`
+    clientID: GOOGLE_CLIENT_ID,
+    clientSecret: GOOGLE_CLIENT_SECRET,
+    callbackURL: `${HOST}/auth/google/callback`
   },
 
   function(access, refresh, profile, done) {
@@ -28,8 +29,8 @@ passport.use(
   }
 ))
 
-app.get('/google', passport.authenticate('google', { scope: 'email', session: false }))
+app.get('/', passport.authenticate('google', { scope: 'email', session: false }))
 
-app.get('/google/callback', passport.authenticate('google', { session: false }), (req, res) => {
+app.get('/callback', passport.authenticate('google', { session: false }), (req, res) => {
   res.redirect('/')
 })

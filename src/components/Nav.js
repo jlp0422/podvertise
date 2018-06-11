@@ -6,7 +6,7 @@ const Nav = () => {
     <div className="nav-wrapper">
       <div className="logo-grid">
         <Link className="logo-image-grid" to='/about'><img className="logo-image" src="http://www.ccorpusa.com/wp-content/uploads/2017/07/logo.png" /></Link>
-        <a href='/auth/google'><button className="login-btn">Login</button></a>
+        <a href='/auth/github'><button className="login-btn">Login</button></a>
       </div>
       <div className="nav-grid">
         <Link className="nav-link-1" to='/about'>About</Link>
