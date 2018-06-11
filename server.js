@@ -1,8 +1,12 @@
 /* eslint-disable */
+require('dotenv').config()
 const express = require('express');
 const app = express();
 const path = require('path');
 const nodemailer = require('nodemailer');
+
+app.use(require('body-parser').json())
+app.use(require('body-parser').urlencoded({ extended: true }))
 
 app.use('/dist', express.static(path.join(__dirname, 'dist')))
 app.use('/vendor', express.static(path.join(__dirname, 'node_modules')))
@@ -11,23 +15,21 @@ app.use('/vendor', express.static(path.join(__dirname, './src/public')))
 app.get('/', (req, res, next) => res.sendFile(path.join(__dirname, './src/public/index.html')))
 
 app.post('/apply', (req, res, next) => {
-  console.log(req.body.info)
+  console.log(req.body)
   nodemailer.createTestAccount((err, account) => {
     let transporter = nodemailer.createTransport({
-      // service: 'gmail',
-      host: 'smtp.ethereal.email',
-      secure: false,
+      host: 'smtp.sendgrid.net',
       port: 587,
+      secure: false,
       auth: {
-        user: account.user,
-        pass: account.pass
-      },
-      // tls: { rejectUnauthorized: false }
+        user: 'apikey',
+        pass: process.env.MAIL_KEY
+      }
     });
 
     let helper = {
-      from: 'Podvertise <podvertise@gmail.com>',
       to: 'jeremyphilipson@gmail.com',
+      from: 'Podvertise <podvertise@gmail.com>',
       subject: 'Testing',
       html: `<div>Hello</div>`
     }

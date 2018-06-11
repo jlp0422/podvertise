@@ -25,6 +25,7 @@ class Podcast extends React.Component {
 
   onSubmit() {
     const info = this.state
+    // console.log(info)
     axios.post('/apply', info)
   }
 
