@@ -4,6 +4,8 @@ import { HashRouter as Router, Route, Switch, Redirect } from 'react-router-dom'
 import Nav from './Nav';
 import About from './About';
 import Podcast from './Podcast';
+import Advertise from './Advertise';
+import Contact from './Contact';
 
 const App = () => {
   return (
@@ -11,13 +13,11 @@ const App = () => {
       <div id="wrapper">
         <Route path='/' component={ Nav } />
         <Switch>
-        <Route path='/' exact render={() => <Redirect to='/about' /> } />
-        <Route path='/about' exact component={ About } />
-        <Route path='/podcast' exact component={ Podcast } />
-        {/*
+          <Route path='/' exact render={() => <Redirect to='/about' /> } />
+          <Route path='/about' exact component={ About } />
+          <Route path='/podcast' exact component={ Podcast } />
           <Route path='/advertise' exact component={ Advertise } />
           <Route path='/contact' exact component={ Contact } />
-          */}
         </Switch>
       </div>
     </Router>

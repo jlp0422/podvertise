@@ -3,7 +3,7 @@ const app = require('express').Router();
 const nodemailer = require('nodemailer');
 module.exports = app;
 
-app.post('/apply', (req, res, next) => {
+app.post('/', (req, res, next) => {
   console.log(req.body)
   nodemailer.createTestAccount((err, account) => {
     let transporter = nodemailer.createTransport({

@@ -11,15 +11,21 @@
 .logo-grid {
   display: grid;
   grid-template-rows: 1;
-  grid-template-columns: 1fr 100px 1fr;
+  grid-template-columns: 1fr 75px 1fr 100px 1fr 75px 1fr;
 }
 
 .logo-image-grid {
-  grid-column-start: 2;
+  grid-column-start: 4;
 }
 
 .logo-image {
   max-width: 100%;
+}
+
+.login-btn {
+  grid-column-start: 6;
+  justify-self: center;
+  align-self: center;
 }
 
 .nav-grid {
@@ -86,4 +92,38 @@
 
 .form-item {
   margin: 10px 0px;
+}
+
+/* **** ADVERTISE GRID **** */
+.adv-grid {
+  display: grid;
+  grid-template-columns: 5% 3fr 2fr 5%;
+}
+
+.adv-copy {
+  grid-column-start: 2;
+  /* margin-top: 20%; */
+}
+
+.adv-image {
+  grid-column-start: 3
+}
+
+.stock-photo {
+  max-width: 100%;
+}
+
+/* **** CONTACT GRID **** */
+.contact-grid {
+  display: grid;
+  grid-template-columns: 5% 1fr 5%;
+}
+
+.contact-grid > * {
+  grid-column-start: 2;
+  justify-self: center
+}
+
+.contact-grid > h1 {
+  margin-top: 20px;
 }

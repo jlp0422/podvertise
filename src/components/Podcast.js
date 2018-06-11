@@ -25,7 +25,6 @@ class Podcast extends React.Component {
 
   onSubmit() {
     const info = this.state
-    // console.log(info)
     axios.post('/apply', info)
   }
 
@@ -36,7 +35,7 @@ class Podcast extends React.Component {
       <div className="podcast-grid">
         <div className="pod-form-grid">
           <h1 className="pod-headline">Apply today</h1>
-          <h3 className="pod-sub">To be a part of the Podvertise family</h3>
+          <h3 className="pod-sub">To be part of the Podvertise family</h3>
 
           <div className="form-group form-item">
             <label>Podcast Name</label>
