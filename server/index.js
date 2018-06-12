@@ -17,7 +17,7 @@ app.use('/', require('./routes'))
 
 app.get('/', (req, res, next) => res.sendFile(path.join(__dirname, './../src/public/index.html')))
 
-db.sync()
-
 const port = process.env.PORT || 3000
 app.listen(port, () => console.log(`port of call: ${port}`))
+
+db.sync()
