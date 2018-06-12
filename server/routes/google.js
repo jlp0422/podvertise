@@ -12,7 +12,6 @@ passport.use(
     clientSecret: GOOGLE_CLIENT_SECRET,
     callbackURL: `${HOST}/auth/google/callback`
   },
-
   function(access, refresh, profile, done) {
     User.findOrCreate({
       where: { googleId: profile.id },
@@ -22,9 +21,7 @@ passport.use(
         email: profile.emails[0].value,
       }
     })
-    .spread((user, created) => {
-      done(null, user)
-    })
+    .spread((user, created) => done(null, user))
     .catch(done)
   }
 ))

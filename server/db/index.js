@@ -8,7 +8,8 @@ const User = conn.define('user', {
   lastName: Sequelize.STRING,
   email: Sequelize.STRING,
   googleId: Sequelize.STRING,
-  githubId: Sequelize.STRING
+  githubId: Sequelize.STRING,
+  facebookId: Sequelize.STRING
 })
 
 const sync = () => {
