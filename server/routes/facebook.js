@@ -24,11 +24,7 @@ passport.use( new FacebookStrategy(
 app.get('/', passport.authenticate('facebook', { session: false }))
 
 // callback is a little messed up, but works
-app.get('/callback', passport.authenticate('facebook', {
-  // successRedirect: '/',
-  // failureRedirect: '#/contact',
-  session: false
-}), (req, res) => {
+app.get('/callback', passport.authenticate('facebook', { session: false }), (req, res) => {
   console.log('*** RESPONSE ****', res)
   res.redirect('/')
 })

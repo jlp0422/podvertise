@@ -13,14 +13,15 @@ const githubCreds = {
 }
 
 const verificationCallback = (accessToken, refreshToken, profile, done) => {
-  console.log('*** access token: ', accessToken)
-  console.log('*** refresh token: ', refreshToken)
+  console.log(profile)
+  const [ firstName, lastName ] = profile.displayName.split(' ')
+  const email = profile.emails[0].value || ''
   User.findOrCreate({
     where: { githubId: profile.id },
     defaults: {
-      firstname: profile.displayName.split(' ')[0],
-      lastname: profile.displayName.split(' ')[1],
-      email: profile.emails[0].value,
+      firstName,
+      lastName,
+      email
     }
   })
   .spread((user, created) => done(null, user))
@@ -29,9 +30,8 @@ const verificationCallback = (accessToken, refreshToken, profile, done) => {
 
 passport.use(new GitHubStrategy(githubCreds, verificationCallback))
 
-app.use('/', passport.authenticate('github', { session: false }))
+app.get('/', passport.authenticate('github', { session: false }))
 
-app.use('/callback', passport.authenticate('github', { failureRedirect: '/contact', session: false }), (req, res) => {
-  console.log('call back user: ', req.user)
+app.get('/callback', passport.authenticate('github', { session: false }), (req, res) => {
   res.redirect('/')
 })

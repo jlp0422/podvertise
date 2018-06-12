@@ -4,7 +4,7 @@ const express = require('express');
 const app = express();
 const path = require('path');
 const db = require('./db')
-const passport = require('passport')
+// const passport = require('passport')
 
 app.use(require('body-parser').json())
 app.use(require('body-parser').urlencoded({ extended: true }))
