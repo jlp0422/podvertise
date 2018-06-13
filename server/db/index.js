@@ -1,5 +1,5 @@
 const Sequelize = require('sequelize');
-const conn = new Sequelize(process.env.DATABAUSE_URL || 'postgres://localhost/podvertise_db', {
+const conn = new Sequelize(process.env.DATABASE_URL || 'postgres://localhost/podvertise_db', {
   logging: false
 })
 
