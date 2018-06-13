@@ -8,7 +8,7 @@ const Advertise = () => {
         <h2 className="adv-header">Advertising with Podvertise</h2>
         <h5 className="adv-subheader">Some sub heading copy</h5>
         <Link to='/podcast'>
-          <button>Contact us today</button>
+          <button className="btn btn-success">Contact us today</button>
         </Link>
       </div>
       <div className="adv-image">
