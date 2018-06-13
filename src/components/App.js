@@ -7,6 +7,9 @@ import Podcast from './Podcast';
 import Advertise from './Advertise';
 import Contact from './Contact';
 
+const { hash } = window.location
+if (hash.match(/_=_/)) window.location.hash = '/'
+
 const App = () => {
   return (
     <Router>

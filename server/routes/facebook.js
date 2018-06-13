@@ -13,6 +13,7 @@ passport.use( new FacebookStrategy(
     callbackURL: `${HOST}/auth/facebook/callback`
   },
   function(access, refresh, profile, done) {
+    console.log(profile)
     User.findOrCreate({
       where: { facebookId: profile.id }
     })
@@ -21,10 +22,9 @@ passport.use( new FacebookStrategy(
   }
 ))
 
-app.get('/', passport.authenticate('facebook', { session: false }))
+app.get('/', passport.authenticate('facebook', { scope: ['email', 'public_profile'], session: false }))
 
 // callback is a little messed up, but works
-app.get('/callback', passport.authenticate('facebook', { session: false }), (req, res) => {
-  console.log('*** RESPONSE ****', res)
+app.get('/callback', passport.authenticate('facebook', { /* failureRedirect: '/login', */ session: false }), (req, res) => {
   res.redirect('/')
 })
